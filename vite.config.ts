@@ -28,6 +28,6 @@ export default defineConfig({
   root: path.resolve(import.meta.dirname, "client"),
   build: {
     ssr: false,
-    outDir: "dist/public",
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
   },
 });
