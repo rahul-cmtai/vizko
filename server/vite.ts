@@ -76,6 +76,11 @@ export function serveStatic(app: Express) {
     );
   }
 
+  // Serve favicon.ico specifically
+  app.get("/favicon.ico", (req, res) => {
+    res.sendFile(path.resolve(distPath, "favicon.ico"));
+  });
+
   app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist
