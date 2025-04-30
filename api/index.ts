@@ -1,19 +1,13 @@
-import express from 'express';
-import { serveStatic } from '../server/vite';
-import { registerRoutes } from '../server/routes';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-// Create Express app
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Register API routes
-(async () => {
-  await registerRoutes(app);
-})();
-
-// Serve static files
-serveStatic(app);
-
-// Export for Vercel serverless function
-export default app; 
+// Simple health check endpoint for Vercel
+export default async function handler(
+  request: VercelRequest,
+  response: VercelResponse
+) {
+  response.status(200).json({
+    status: 'ok',
+    message: 'Vizko Exports API is running',
+    timestamp: new Date().toISOString()
+  });
+} 
