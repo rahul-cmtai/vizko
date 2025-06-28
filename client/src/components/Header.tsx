@@ -6,7 +6,8 @@ import {
   Facebook, 
   Instagram, 
   Linkedin, 
-  Twitter 
+  Twitter,
+  Globe
 } from "lucide-react";
 
 export default function Header() {
@@ -35,11 +36,18 @@ export default function Header() {
   return (
     <header className="bg-white shadow-sm fixed w-full z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center py-6">
+        <div className="flex items-center py-4">
           {/* Logo */}
-          <div className="flex-shrink-0 w-1/4">
+          <div className="flex-shrink-0 w-1/3 md:w-1/4">
             <Link href="/" className="flex items-center">
-              <span className="text-primary font-playfair font-bold text-3xl">VIZKO</span>
+              <div className="flex items-center">
+                <Globe className="text-primary h-6 w-6 md:h-8 md:w-8 mr-2" />
+                <div className="flex items-center">
+                  <span className="text-primary font-playfair font-bold text-2xl md:text-3xl mr-2">Vizko</span>
+                  <div className="h-6 md:h-8 w-0.5 bg-gradient-to-b from-primary via-gray-400 to-gray-300 mx-2"></div>
+                  <span className="text-gray-700 font-medium text-xs md:text-sm tracking-wider uppercase">Global Exports</span>
+                </div>
+              </div>
             </Link>
           </div>
 
