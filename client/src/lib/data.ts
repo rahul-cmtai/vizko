@@ -31,34 +31,34 @@ export interface EnhancedProductType {
 import productsData from '../data/products.json';
 
 // High-quality mattress images from Unsplash
-const mattressImages = {
+export const mattressImages = {
   hybrid: [
-    "https://images.unsplash.com/photo-1630513767948-0329398049dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1634646803754-000c2e548dc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80",
-    "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1633505899118-4ca6bd143043?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80",
-    "https://images.unsplash.com/photo-1635143407896-adba1afd8321?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+    "/src/assets/images/Hybrid/Front.jpg",
+    "/src/assets/images/Hybrid/comfort.jpg",
+    "/src/assets/images/Hybrid/Features.jpg",
+    "/src/assets/images/Hybrid/Fornt Page2.jpg",
+    "/src/assets/images/Hybrid/Sacle2.jpg"
   ],
   innerspring: [
-    "https://images.unsplash.com/photo-1634646803754-000c2e548dc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80",
-    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1589782182703-2aaa69037b5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80",
-    "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    "/src/assets/images/Innerspring/Front.jpg",
+    "/src/assets/images/Innerspring/Fourth.jpg",
+    "/src/assets/images/Innerspring/Second.jpg",
+    "/src/assets/images/Innerspring/Third.jpg"
   ],
   memoryfoam: [
-    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1630513767948-0329398049dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1556637641-0ac7101023f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+    "/src/assets/images/Memory Foam/First.jpg",
+    "/src/assets/images/Memory Foam/Second Page.jpg",
+    "/src/assets/images/Memory Foam/Second.jpg",
+    "/src/assets/images/Memory Foam/Third page.jpg"
   ],
   orthopaedic: [
-    "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1634646803754-000c2e548dc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80",
-    "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    "https://images.unsplash.com/photo-1591079381491-57fbe434c8b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80",
-    "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+        "/src/assets/images/Orthopedic/First.jpg",
+    "/src/assets/images/Orthopedic/Features.jpg",
+    "/src/assets/images/Orthopedic/First Page.jpg",
+    "/src/assets/images/Orthopedic/Front Page.jpg",
+    "/src/assets/images/Orthopedic/Mattress Layers .jpg",
+    "/src/assets/images/Orthopedic/sleeping.jpeg.jpg",
+
   ]
 };
 
@@ -81,7 +81,8 @@ function getRandomImageForCategory(category: string): string {
 // Transform the JSON data to our EnhancedProductType format
 export const allProducts: EnhancedProductType[] = productsData.map((product: any, index: number) => {
   const category = getCategoryFromTitle(product.Title);
-  const image = getRandomImageForCategory(category);
+  const categoryImages = mattressImages[category as keyof typeof mattressImages] || ["/src/assets/images/default-mattress.jpg"];
+  const image = categoryImages[0]; // Always use the first image for the category
   
   return {
     id: `${category}-${product.Length}-${product.Breadth}-${product.Height}-${index}`,
@@ -199,3 +200,4 @@ export const productData: Record<string, ProductType> = {
     ]
   }
 };
+

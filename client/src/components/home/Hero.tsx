@@ -1,44 +1,48 @@
 import { Link } from "wouter";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
+import HybridFront from "../../assets/images/Hybrid/Front.jpg";
+import InnerspringFront from "../../assets/images/Innerspring/Front.jpg";
+import MemoryFoamFirst from "../../assets/images/Memory Foam/First.jpg";
+import OrthopedicFrontPage from "../../assets/images/Orthopedic/First.jpg";
 
 // Define the slide data
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    alt: "Premium mattress in luxury bedroom",
+    image: HybridFront,
+    alt: "Hybrid mattress front view",
     title: "Premium Mattresses. Global Comfort.",
     description: "Export-quality comfort, crafted in India. Experience the perfect balance of luxury, support, and durability.",
     ctaText: "Explore Products"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
-    alt: "Comfortable memory foam mattress",
+    image: InnerspringFront,
+    alt: "Innerspring mattress front view",
     title: "Luxury Redefined. Sleep Perfected.",
     description: "Discover our premium collection of memory foam mattresses, designed for ultimate comfort and support.",
     ctaText: "View Collection"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1634646515707-de1b9cda79b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
-    alt: "Luxury mattress in elegant bedroom",
+    image: MemoryFoamFirst,
+    alt: "Memory Foam mattress front view",
     title: "Sleep Like Royalty. Every Night.",
     description: "Experience the luxury of premium bedding with our exclusive range of mattresses and accessories.",
     ctaText: "Shop Now"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-    alt: "Orthopedic mattress in modern bedroom",
+    image: OrthopedicFrontPage,
+    alt: "Orthopedic mattress front view",
     title: "Orthopedic Excellence. For Your Health.",
     description: "Our orthopedic mattresses are designed to provide perfect spinal alignment and pressure relief.",
     ctaText: "Learn More"
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    image: HybridFront,
     alt: "Premium innerspring mattress",
     title: "Innovative Comfort. Timeless Design.",
     description: "Experience the perfect blend of traditional craftsmanship and modern technology in our mattresses.",

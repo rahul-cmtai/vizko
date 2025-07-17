@@ -69,4 +69,19 @@
     color: rgba(0, 35, 102, 0.1);
     z-index: 0;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #1e293b; /* or your desired color */
+  }
+
+  .product-swiper .swiper-button-next,
+  .product-swiper .swiper-button-prev {
+    color: #1d4ed8; /* Tailwind's primary color or your brand color */
+    z-index: 20;
+  }
+
+  .product-swiper .swiper-pagination-bullet-active {
+    background: #1d4ed8;
+  }
 }

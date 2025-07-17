@@ -1,17 +1,35 @@
 import { useParams, Link } from "wouter";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import { EnhancedProductType, allProducts } from "@/lib/data";
+import { EnhancedProductType, allProducts, mattressImages } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ShoppingCart, Ruler, Layers, Grid3X3 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import ProductCard from "@/components/products/ProductCard";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const [product, setProduct] = useState<EnhancedProductType | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<EnhancedProductType[]>([]);
-  const [compareProducts, setCompareProducts] = useState<EnhancedProductType[]>([]);
+  
+  // Keen slider setup
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: { perView: 1 },
+  });
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (!slider.current) return;
+    slider.current.on("slideChanged", (s) => setCurrentSlide(s.track.details.rel));
+  }, [slider]);
+
+  // Keen slider navigation handlers
+  const goPrev = () => slider.current?.prev();
+  const goNext = () => slider.current?.next();
   
   useEffect(() => {
     if (productId) {
@@ -47,6 +65,13 @@ export default function ProductDetailPage() {
     );
   }
   
+  // Get images for the product category
+  const images =
+    mattressImages[product.category as keyof typeof mattressImages] && 
+    mattressImages[product.category as keyof typeof mattressImages].length > 0
+      ? mattressImages[product.category as keyof typeof mattressImages]
+      : [product.image]; // fallback to the product's image
+  
   return (
     <>
       <Helmet>
@@ -68,11 +93,53 @@ export default function ProductDetailPage() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
               <div className="relative">
-                <img 
-                  src={product.image} 
-                  alt={product.title} 
-                  className="w-full h-auto object-cover rounded-md shadow-md"
-                />
+                {/* Keen Slider Implementation */}
+                <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-100">
+                  <div ref={sliderRef} className="keen-slider w-full h-full">
+                    {images.map((img, idx) => (
+                      <div key={idx} className="keen-slider__slide flex items-center justify-center w-full h-full bg-gray-100">
+                        <img
+                          src={img.startsWith("http") ? `/api/image-proxy?url=${encodeURIComponent(img)}` : img}
+                          alt={`${product.title} ${idx + 1}`}
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  {images.length > 1 && (
+                    <>
+                      <button
+                        aria-label="Previous"
+                        onClick={goPrev}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow p-2 rounded-full z-10"
+                        type="button"
+                      >
+                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M13 17l-5-5 5-5" />
+                        </svg>
+                      </button>
+                      <button
+                        aria-label="Next"
+                        onClick={goNext}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow p-2 rounded-full z-10"
+                        type="button"
+                      >
+                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M7 7l5 5-5 5" />
+                        </svg>
+                      </button>
+                      {/* Dots */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                        {images.map((_, idx) => (
+                          <span
+                            key={idx}
+                            className={`w-2 h-2 rounded-full ${currentSlide === idx ? "bg-primary" : "bg-gray-300"}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
                 <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
                   {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
                 </div>
@@ -142,6 +209,8 @@ export default function ProductDetailPage() {
               </ul>
             </div>
           </div>
+          
+          <Separator className="my-8" />
           
           {/* Related Products */}
           {relatedProducts.length > 0 && (

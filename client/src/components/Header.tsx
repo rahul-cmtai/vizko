@@ -43,7 +43,7 @@ export default function Header() {
               <div className="flex items-center">
                 <Globe className="text-primary h-6 w-6 md:h-8 md:w-8 mr-2" />
                 <div className="flex items-center">
-                  <span className="text-primary font-playfair font-bold text-2xl md:text-3xl mr-2">Vizko</span>
+                  <span className="text-primary font-playfair font-bold text-2xl md:text-3xl mr-2">VIZKO</span>
                   <div className="h-6 md:h-8 w-0.5 bg-gradient-to-b from-primary via-gray-400 to-gray-300 mx-2"></div>
                   <span className="text-gray-700 font-medium text-xs md:text-sm tracking-wider uppercase">Global Exports</span>
                 </div>

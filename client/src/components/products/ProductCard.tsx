@@ -36,9 +36,14 @@ export default function ProductCard({
     >
       <div className="relative">
         <img 
-          src={product.image} 
+          src={product.image || "/src/assets/images/default-mattress.jpg"}
           alt={product.title}
           className={`w-full h-48 object-cover transition-transform duration-300 ${isHovered ? 'scale-105' : 'scale-100'}`}
+          onError={e => {
+            const target = e.target as HTMLImageElement;
+            target.onerror = null;
+            target.src = "/src/assets/images/hybrid/Front.jpg"; // Fallback image
+          }}
         />
         <div className="absolute top-2 left-2">
           <Badge className="bg-primary text-white text-xs font-medium px-2.5 py-0.5 rounded">

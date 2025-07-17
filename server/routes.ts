@@ -44,6 +44,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Image proxy endpoint to avoid CORS issues
+  app.get("/api/image-proxy", async (req, res) => {
+    const url = req.query.url;
+    if (!url || typeof url !== "string") {
+      return res.status(400).send("No url provided");
+    }
+    try {
+      const fetch = (await import("node-fetch")).default;
+      const response = await fetch(url);
+      const contentType = response.headers.get("content-type");
+      if (contentType) res.setHeader("Content-Type", contentType);
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      response.body.pipe(res);
+    } catch (err) {
+      res.status(500).send("Error fetching image");
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

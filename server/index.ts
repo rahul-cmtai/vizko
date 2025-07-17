@@ -68,7 +68,7 @@ if (isVercel) {
     }
 
     // Choose a port that is less likely to be in use
-    const port = process.env.PORT || 4321;
+    const port = process.env.PORT || 3000;
     server.listen(port, () => {
       log(`serving on port ${port}`);
     });

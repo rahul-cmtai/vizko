@@ -17,7 +17,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 1 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1630513767948-0329398049dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+              src="/src/assets/images/Hybrid/Front.jpg" 
               alt="Hybrid Mattress" 
               className="w-full h-48 object-cover"
             />
@@ -39,7 +39,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 2 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1634646803754-000c2e548dc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80" 
+              src="/src/assets/images/Innerspring/Front.jpg" 
               alt="Inner Spring Mattress" 
               className="w-full h-48 object-cover"
             />
@@ -61,7 +61,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 3 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+              src="/src/assets/images/Memory Foam/First.jpg" 
               alt="Memory Foam Mattress" 
               className="w-full h-48 object-cover"
             />
@@ -83,7 +83,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 4 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+              src="/src/assets/images/Orthopedic/First.jpg" 
               alt="Orthopaedic Mattress" 
               className="w-full h-48 object-cover"
             />
