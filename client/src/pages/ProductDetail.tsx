@@ -14,19 +14,35 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<EnhancedProductType | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<EnhancedProductType[]>([]);
   
-  // Keen slider setup
+  // Keen slider setup with autoplay
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slides: { perView: 1 },
+    created: () => {
+      setLoaded(true);
+    },
+    slideChanged: (s) => {
+      setCurrentSlide(s.track.details.rel);
+    },
+    renderMode: "performance",
   });
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
+  // Set up autoplay
   useEffect(() => {
-    if (!slider.current) return;
-    slider.current.on("slideChanged", (s) => setCurrentSlide(s.track.details.rel));
-  }, [slider]);
+    if (slider.current && loaded) {
+      const interval = setInterval(() => {
+        slider.current?.next();
+      }, 3000); // Change slide every 3 seconds
 
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [slider, loaded]);
+  
   // Keen slider navigation handlers
   const goPrev = () => slider.current?.prev();
   const goNext = () => slider.current?.next();
@@ -106,7 +122,7 @@ export default function ProductDetailPage() {
                       </div>
                     ))}
                   </div>
-                  {images.length > 1 && (
+                  {images.length > 1 && loaded && (
                     <>
                       <button
                         aria-label="Previous"
@@ -128,15 +144,6 @@ export default function ProductDetailPage() {
                           <path d="M7 7l5 5-5 5" />
                         </svg>
                       </button>
-                      {/* Dots */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                        {images.map((_, idx) => (
-                          <span
-                            key={idx}
-                            className={`w-2 h-2 rounded-full ${currentSlide === idx ? "bg-primary" : "bg-gray-300"}`}
-                          />
-                        ))}
-                      </div>
                     </>
                   )}
                 </div>
@@ -213,7 +220,7 @@ export default function ProductDetailPage() {
           <Separator className="my-8" />
           
           {/* Related Products */}
-          {relatedProducts.length > 0 && (
+          {relatedProducts.length > 1 && (
             <div className="mt-12">
               <div className="flex items-center gap-2 mb-6">
                 <Grid3X3 className="text-primary h-5 w-5" />
