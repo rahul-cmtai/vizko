@@ -42,7 +42,7 @@ export default function ProductCard({
           onError={e => {
             const target = e.target as HTMLImageElement;
             target.onerror = null;
-            target.src = "/src/assets/images/hybrid/Front.jpg"; // Fallback image
+            target.src = "/src/assets/images/Hybrid/Front.jpg"; // Fallback image
           }}
         />
         <div className="absolute top-2 left-2">

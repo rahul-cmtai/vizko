@@ -52,13 +52,11 @@ export const mattressImages = {
     "/src/assets/images/Memory Foam/Third page.jpg"
   ],
   orthopaedic: [
-        "/src/assets/images/Orthopedic/First.jpg",
+    "/src/assets/images/Orthopedic/First.jpg",
     "/src/assets/images/Orthopedic/Features.jpg",
     "/src/assets/images/Orthopedic/First Page.jpg",
-    "/src/assets/images/Orthopedic/Front Page.jpg",
     "/src/assets/images/Orthopedic/Mattress Layers .jpg",
-    "/src/assets/images/Orthopedic/sleeping.jpeg.jpg",
-
+    "/src/assets/images/Orthopedic/sleeping.jpeg.jpg"
   ]
 };
 
@@ -107,7 +105,7 @@ export const productData: Record<string, ProductType> = {
     id: "hybrid",
     name: "Hybrid",
     description: "Our premium Hybrid mattresses combine the supportive strength of pocket springs with the comfort of high-density memory foam. This perfect balance delivers exceptional pressure relief and responsive support, making it ideal for luxury hotels and discerning retailers.",
-    image: "https://images.unsplash.com/photo-1630513767948-0329398049dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    image: "/src/assets/images/Hybrid/Front.jpg",
     thicknesses: ["4", "6", "8"],
     pricing: [
       {
@@ -131,7 +129,7 @@ export const productData: Record<string, ProductType> = {
     id: "innerspring",
     name: "Inner Spring",
     description: "Our Inner Spring mattresses feature premium coil systems that provide responsive support and excellent durability. The interconnected spring design promotes airflow while delivering consistent comfort across the entire surface.",
-    image: "https://images.unsplash.com/photo-1634646803754-000c2e548dc1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80",
+    image: "/src/assets/images/Innerspring/Front.jpg",
     thicknesses: ["6", "8"],
     pricing: [
       {
@@ -155,7 +153,7 @@ export const productData: Record<string, ProductType> = {
     id: "memoryfoam",
     name: "Memory Foam",
     description: "Experience the ultimate in pressure-relieving comfort with our Memory Foam mattresses. The high-density foam contours perfectly to your body, reducing pressure points and providing extraordinary support throughout the night.",
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    image: "/src/assets/images/Memory Foam/First.jpg",
     thicknesses: ["4", "6", "8"],
     pricing: [
       {
@@ -179,7 +177,7 @@ export const productData: Record<string, ProductType> = {
     id: "orthopaedic",
     name: "Orthopaedic",
     description: "Our Orthopaedic mattresses are specifically designed to provide proper spinal alignment and therapeutic support. These mattresses feature zones of varied firmness to ensure proper ergonomic support for different parts of the body.",
-    image: "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    image: "/src/assets/images/Orthopedic/First.jpg",
     thicknesses: ["6", "8"],
     pricing: [
       {
