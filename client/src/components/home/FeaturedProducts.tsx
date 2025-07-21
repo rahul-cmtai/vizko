@@ -17,7 +17,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 1 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="/src/assets/images/Hybrid/Front.jpg" 
+              src="/assets/images/Hybrid/Front.jpg" 
               alt="Hybrid Mattress" 
               className="w-full h-48 object-cover"
             />
@@ -39,7 +39,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 2 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="/src/assets/images/Innerspring/Front.jpg" 
+              src="/assets/images/Innerspring/Front.jpg" 
               alt="Inner Spring Mattress" 
               className="w-full h-48 object-cover"
             />
@@ -61,7 +61,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 3 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="/src/assets/images/Memory Foam/First.jpg" 
+              src="/assets/images/Memory Foam/First.jpg" 
               alt="Memory Foam Mattress" 
               className="w-full h-48 object-cover"
             />
@@ -83,7 +83,7 @@ export default function FeaturedProducts() {
           {/* Mattress Type 4 */}
           <div className="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-xl">
             <img 
-              src="/src/assets/images/Orthopedic/First.jpg" 
+              src="/assets/images/Orthopedic/First.jpg" 
               alt="Orthopaedic Mattress" 
               className="w-full h-48 object-cover"
             />

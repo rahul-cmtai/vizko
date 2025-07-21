@@ -1,16 +1,12 @@
 import { Link } from "wouter";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
-import HybridFront from "../../assets/images/Hybrid/Front.jpg";
-import InnerspringFront from "../../assets/images/Innerspring/Front.jpg";
-import MemoryFoamFirst from "../../assets/images/Memory Foam/First.jpg";
-import OrthopedicFrontPage from "../../assets/images/Orthopedic/First.jpg";
 
 // Define the slide data
 const slides = [
   {
     id: 1,
-    image: HybridFront,
+    image: "/assets/images/Hybrid/Front.jpg",
     alt: "Hybrid mattress front view",
     title: "Premium Mattresses. Global Comfort.",
     description: "Export-quality comfort, crafted in India. Experience the perfect balance of luxury, support, and durability.",
@@ -18,7 +14,7 @@ const slides = [
   },
   {
     id: 2,
-    image: InnerspringFront,
+    image: "/assets/images/Innerspring/Front.jpg",
     alt: "Innerspring mattress front view",
     title: "Luxury Redefined. Sleep Perfected.",
     description: "Discover our premium collection of memory foam mattresses, designed for ultimate comfort and support.",
@@ -26,7 +22,7 @@ const slides = [
   },
   {
     id: 3,
-    image: MemoryFoamFirst,
+    image: "/assets/images/Memory Foam/First.jpg",
     alt: "Memory Foam mattress front view",
     title: "Sleep Like Royalty. Every Night.",
     description: "Experience the luxury of premium bedding with our exclusive range of mattresses and accessories.",
@@ -34,7 +30,7 @@ const slides = [
   },
   {
     id: 4,
-    image: OrthopedicFrontPage,
+    image: "/assets/images/Orthopedic/First.jpg",
     alt: "Orthopedic mattress front view",
     title: "Orthopedic Excellence. For Your Health.",
     description: "Our orthopedic mattresses are designed to provide perfect spinal alignment and pressure relief.",
@@ -42,7 +38,7 @@ const slides = [
   },
   {
     id: 5,
-    image: HybridFront,
+    image: "/assets/images/Hybrid/Front.jpg",
     alt: "Premium innerspring mattress",
     title: "Innovative Comfort. Timeless Design.",
     description: "Experience the perfect blend of traditional craftsmanship and modern technology in our mattresses.",

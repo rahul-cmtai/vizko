@@ -36,13 +36,13 @@ export default function ProductCard({
     >
       <div className="relative">
         <img 
-          src={product.image || "/src/assets/images/default-mattress.jpg"}
+          src={product.image || "/assets/images/default-mattress.jpg"}
           alt={product.title}
           className={`w-full h-48 object-cover transition-transform duration-300 ${isHovered ? 'scale-105' : 'scale-100'}`}
           onError={e => {
             const target = e.target as HTMLImageElement;
             target.onerror = null;
-            target.src = "/src/assets/images/Hybrid/Front.jpg"; // Fallback image
+            target.src = "/assets/images/Hybrid/Front.jpg"; // Fallback image
           }}
         />
         <div className="absolute top-2 left-2">

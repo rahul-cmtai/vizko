@@ -30,33 +30,33 @@ export interface EnhancedProductType {
 // Import the JSON data
 import productsData from '../data/products.json';
 
-// High-quality mattress images from Unsplash
+// High-quality mattress images from public folder
 export const mattressImages = {
   hybrid: [
-    "/src/assets/images/Hybrid/Front.jpg",
-    "/src/assets/images/Hybrid/comfort.jpg",
-    "/src/assets/images/Hybrid/Features.jpg",
-    "/src/assets/images/Hybrid/Fornt Page2.jpg",
-    "/src/assets/images/Hybrid/Sacle2.jpg"
+    "/assets/images/Hybrid/Front.jpg",
+    "/assets/images/Hybrid/comfort.jpg",
+    "/assets/images/Hybrid/Features.jpg",
+    "/assets/images/Hybrid/Fornt Page2.jpg",
+    "/assets/images/Hybrid/Sacle2.jpg"
   ],
   innerspring: [
-    "/src/assets/images/Innerspring/Front.jpg",
-    "/src/assets/images/Innerspring/Fourth.jpg",
-    "/src/assets/images/Innerspring/Second.jpg",
-    "/src/assets/images/Innerspring/Third.jpg"
+    "/assets/images/Innerspring/Front.jpg",
+    "/assets/images/Innerspring/Fourth.jpg",
+    "/assets/images/Innerspring/Second.jpg",
+    "/assets/images/Innerspring/Third.jpg"
   ],
   memoryfoam: [
-    "/src/assets/images/Memory Foam/First.jpg",
-    "/src/assets/images/Memory Foam/Second Page.jpg",
-    "/src/assets/images/Memory Foam/Second.jpg",
-    "/src/assets/images/Memory Foam/Third page.jpg"
+    "/assets/images/Memory Foam/First.jpg",
+    "/assets/images/Memory Foam/Second Page.jpg",
+    "/assets/images/Memory Foam/Second.jpg",
+    "/assets/images/Memory Foam/Third page.jpg"
   ],
   orthopaedic: [
-    "/src/assets/images/Orthopedic/First.jpg",
-    "/src/assets/images/Orthopedic/Features.jpg",
-    "/src/assets/images/Orthopedic/First Page.jpg",
-    "/src/assets/images/Orthopedic/Mattress Layers .jpg",
-    "/src/assets/images/Orthopedic/sleeping.jpeg.jpg"
+    "/assets/images/Orthopedic/First.jpg",
+    "/assets/images/Orthopedic/Features.jpg",
+    "/assets/images/Orthopedic/First Page.jpg",
+    "/assets/images/Orthopedic/Mattress Layers .jpg",
+    "/assets/images/Orthopedic/sleeping.jpeg.jpg"
   ]
 };
 
@@ -79,7 +79,7 @@ function getRandomImageForCategory(category: string): string {
 // Transform the JSON data to our EnhancedProductType format
 export const allProducts: EnhancedProductType[] = productsData.map((product: any, index: number) => {
   const category = getCategoryFromTitle(product.Title);
-  const categoryImages = mattressImages[category as keyof typeof mattressImages] || ["/src/assets/images/default-mattress.jpg"];
+  const categoryImages = mattressImages[category as keyof typeof mattressImages] || ["/assets/images/default-mattress.jpg"];
   const image = categoryImages[0]; // Always use the first image for the category
   
   return {
@@ -105,7 +105,7 @@ export const productData: Record<string, ProductType> = {
     id: "hybrid",
     name: "Hybrid",
     description: "Our premium Hybrid mattresses combine the supportive strength of pocket springs with the comfort of high-density memory foam. This perfect balance delivers exceptional pressure relief and responsive support, making it ideal for luxury hotels and discerning retailers.",
-    image: "/src/assets/images/Hybrid/Front.jpg",
+    image: "/assets/images/Hybrid/Front.jpg",
     thicknesses: ["4", "6", "8"],
     pricing: [
       {
@@ -129,7 +129,7 @@ export const productData: Record<string, ProductType> = {
     id: "innerspring",
     name: "Inner Spring",
     description: "Our Inner Spring mattresses feature premium coil systems that provide responsive support and excellent durability. The interconnected spring design promotes airflow while delivering consistent comfort across the entire surface.",
-    image: "/src/assets/images/Innerspring/Front.jpg",
+    image: "/assets/images/Innerspring/Front.jpg",
     thicknesses: ["6", "8"],
     pricing: [
       {
@@ -153,7 +153,7 @@ export const productData: Record<string, ProductType> = {
     id: "memoryfoam",
     name: "Memory Foam",
     description: "Experience the ultimate in pressure-relieving comfort with our Memory Foam mattresses. The high-density foam contours perfectly to your body, reducing pressure points and providing extraordinary support throughout the night.",
-    image: "/src/assets/images/Memory Foam/First.jpg",
+    image: "/assets/images/Memory Foam/First.jpg",
     thicknesses: ["4", "6", "8"],
     pricing: [
       {
@@ -177,7 +177,7 @@ export const productData: Record<string, ProductType> = {
     id: "orthopaedic",
     name: "Orthopaedic",
     description: "Our Orthopaedic mattresses are specifically designed to provide proper spinal alignment and therapeutic support. These mattresses feature zones of varied firmness to ensure proper ergonomic support for different parts of the body.",
-    image: "/src/assets/images/Orthopedic/First.jpg",
+    image: "/assets/images/Orthopedic/First.jpg",
     thicknesses: ["6", "8"],
     pricing: [
       {
