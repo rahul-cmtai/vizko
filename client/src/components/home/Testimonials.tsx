@@ -37,27 +37,42 @@ const testimonials = [
     name: "Michael Chen",
     title: "Retail Chain Director, Singapore",
     stars: 5
+  },
+  {
+    id: 6,
+    text: "Working with VIZKO has transformed our hospitality experience. Their mattresses have significantly improved our guest satisfaction ratings.",
+    name: "Elena Petrova",
+    title: "Boutique Hotel Owner, Russia",
+    stars: 5
+  },
+  {
+    id: 7,
+    text: "The orthopedic mattresses from VIZKO have received tremendous positive feedback from our customers. They are now our top-selling product line.",
+    name: "David Johnson",
+    title: "Retail Manager, United Kingdom",
+    stars: 5
   }
 ];
 
 export default function Testimonials() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = Math.ceil(testimonials.length / 3);
   
-  // Function to go to next slide
+  // Function to go to next slide with infinite loop
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === Math.floor(testimonials.length/3) ? 0 : prev + 1));
-  }, []);
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  }, [totalSlides]);
   
-  // Function to go to previous slide
+  // Function to go to previous slide with infinite loop
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === 0 ? Math.floor(testimonials.length/3) : prev - 1));
-  }, []);
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  }, [totalSlides]);
   
-  // Auto-advance slides every 6 seconds
+  // Auto-advance slides every 3 seconds with infinite loop
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 6000);
+    }, 3000);
     
     return () => clearInterval(interval);
   }, [nextSlide]);
