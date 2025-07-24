@@ -27,10 +27,10 @@ export default function Header() {
   };
 
   const socialMediaLinks = [
-    { icon: Facebook, url: "https://facebook.com", label: "Facebook" },
-    { icon: Instagram, url: "https://instagram.com", label: "Instagram" },
-    { icon: Twitter, url: "https://twitter.com", label: "Twitter" },
-    { icon: Linkedin, url: "https://linkedin.com", label: "LinkedIn" }
+    { icon: Facebook, url: "https://www.facebook.com/share/1771WNLDvR/?mibextid=wwXIfr", label: "Facebook" },
+    { icon: Instagram, url: "https://www.instagram.com/vizko_global_exports/", label: "Instagram" },
+    { icon: Twitter, url: "https://x.com/vizkoexports?s=21", label: "X" },
+    { icon: Linkedin, url: "https://www.linkedin.com/company/vizko-global-exports/", label: "LinkedIn" }
   ];
 
   return (

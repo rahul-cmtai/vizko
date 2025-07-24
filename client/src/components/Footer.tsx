@@ -1,4 +1,13 @@
 import { Link } from "wouter";
+import { 
+  Facebook, 
+  Instagram, 
+  Linkedin, 
+  Twitter, 
+  Mail, 
+  Phone, 
+  MapPin 
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,16 +24,16 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white hover:text-accent transition duration-300" aria-label="Facebook">
-                <i className="fab fa-facebook-f"></i>
+                <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-white hover:text-accent transition duration-300" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
+                <Twitter className="h-5 w-5" />
               </a>
               <a href="#" className="text-white hover:text-accent transition duration-300" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
+                <Linkedin className="h-5 w-5" />
               </a>
               <a href="#" className="text-white hover:text-accent transition duration-300" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
+                <Instagram className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -56,18 +65,58 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <i className="fas fa-envelope mt-1 mr-3 text-yellow-400"></i>
+                <Mail className="mt-1 mr-3 text-yellow-400 h-5 w-5" />
                 <span className="text-gray-300">sales@vizkoexports.com</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-phone-alt mt-1 mr-3 text-yellow-400"></i>
+                <Phone className="mt-1 mr-3 text-yellow-400 h-5 w-5" />
                 <span className="text-gray-300">+91 98765 43210</span>
               </li>
               <li className="flex items-start">
-                <i className="fas fa-map-marker-alt mt-1 mr-3 text-yellow-400"></i>
+                <MapPin className="mt-1 mr-3 text-yellow-400 h-5 w-5" />
                 <span className="text-gray-300">India (Manufacturing Unit)</span>
               </li>
             </ul>
+            
+            <h4 className="text-lg font-semibold mt-6 mb-3">Follow Us</h4>
+            <div className="flex space-x-4">
+              <a 
+                href="https://www.facebook.com/share/1771WNLDvR/?mibextid=wwXIfr" 
+                className="text-white hover:text-accent transition duration-300" 
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://x.com/vizkoexports?s=21" 
+                className="text-white hover:text-accent transition duration-300" 
+                aria-label="X (Twitter)"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/company/vizko-global-exports/" 
+                className="text-white hover:text-accent transition duration-300" 
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/vizko_global_exports/" 
+                className="text-white hover:text-accent transition duration-300" 
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
         
