@@ -66,11 +66,11 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail className="mt-1 mr-3 text-yellow-400 h-5 w-5" />
-                <span className="text-gray-300">sales@vizkoexports.com</span>
+                <span className="text-gray-300">b2b.sales@vizkoexports.com</span>
               </li>
               <li className="flex items-start">
                 <Phone className="mt-1 mr-3 text-yellow-400 h-5 w-5" />
-                <span className="text-gray-300">+91 98765 43210</span>
+                <span className="text-gray-300">+91 8910323968, +91 6290147848</span>
               </li>
               <li className="flex items-start">
                 <MapPin className="mt-1 mr-3 text-yellow-400 h-5 w-5" />

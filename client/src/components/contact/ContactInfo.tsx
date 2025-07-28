@@ -11,7 +11,7 @@ export default function ContactInfo() {
             </div>
             <div>
               <h3 className="font-bold text-gray-800">Email</h3>
-              <p className="text-gray-700">sales@vizkoexports.com</p>
+              <p className="text-gray-700">b2b.sales@vizkoexports.com</p>
             </div>
           </div>
           
@@ -21,7 +21,7 @@ export default function ContactInfo() {
             </div>
             <div>
               <h3 className="font-bold text-gray-800">Phone</h3>
-              <p className="text-gray-700">+91 98765 43210</p>
+              <p className="text-gray-700">+91 8910323968, +91 6290147848</p>
             </div>
           </div>
           

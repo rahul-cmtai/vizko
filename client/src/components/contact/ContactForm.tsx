@@ -83,16 +83,36 @@ export default function ContactForm() {
 
   async function onSubmit(values: FormValues) {
     setIsSubmitting(true);
-    
+
     try {
-      await apiRequest("POST", "/api/contact", values);
-      
-      toast({
-        title: "Message Sent",
-        description: "Thank you for contacting us. We'll get back to you soon!",
+      // Prepare form data for Web3Forms
+      const formData = new FormData();
+      formData.append("access_key", "685a36e8-634c-4f0c-980b-6d937e96e041");
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("message", values.message);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
       });
-      
-      form.reset();
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for contacting us. We'll get back to you soon!",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "There was a problem sending your message. Please try again.",
+          variant: "destructive",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
