@@ -15,12 +15,12 @@ export default function Layout({ children }: LayoutProps) {
 
   // Function to open Gmail
   const handleEmailClick = () => {
-    window.open("mailto:info@vizko.com", "_blank");
+    window.open("mailto:b2b.sales@vizkoexports.com", "_blank");
   };
 
   // Function to open WhatsApp
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/9112345678", "_blank");
+    window.open("https://wa.me/918910323968", "_blank");
   };
 
   return (

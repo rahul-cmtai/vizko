@@ -52,7 +52,7 @@ export default function ContactInfo() {
         <h2 className="font-playfair text-2xl font-bold text-primary mb-6">Our Location</h2>
         <div className="aspect-w-16 aspect-h-9 h-64 bg-gray-200 rounded-lg overflow-hidden">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9014256111697!2d72.55773615025892!3d23.0336313845843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84ed080ac6a9%3A0xdac8bc2a30c1da18!2sAhmedabad%2C%20Gujarat%2C%20India!5e0!3m2!1sen!2sus!4v1655283444954!5m2!1sen!2sus" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.051085923756!2d88.40186159999999!3d22.502266399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027300008abc55%3A0x7005938f78e48f55!2sSeva%20Rose!5e0!3m2!1sen!2sin!4v1753967836745!5m2!1sen!2sin" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
