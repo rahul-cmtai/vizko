@@ -94,53 +94,20 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <div className="mb-8">
             <h3 className="font-playfair text-xl font-bold text-primary mb-4">Product Details</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="p-4 border rounded-lg bg-gray-50">
-                <h4 className="font-medium text-primary mb-2">Dimensions</h4>
-                <p className="text-gray-700">Length: {product.length} inches</p>
-                <p className="text-gray-700">Breadth: {product.breadth} inches</p>
-                <p className="text-gray-700">Height: {product.height} inches</p>
-              </div>
+              {/* Dimensions removed as requested */}
               <div className="p-4 border rounded-lg bg-gray-50">
                 <h4 className="font-medium text-primary mb-2">Specifications</h4>
                 <p className="text-gray-700">{product.additionalDescription}</p>
                 <p className="text-gray-700">Category: {product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
               </div>
             </div>
-
-            {/* Price */}
-            <div className="bg-gradient-to-r from-primary/10 to-accent p-6 rounded-lg mt-6 border border-primary/20 shadow-md">
-              <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="text-center md:text-left mb-4 md:mb-0">
-                  <p className="text-gray-700 text-sm">Product Configuration</p>
-                  <p className="font-medium text-primary">
-                    {product.length}" × {product.breadth}" × {product.height}" {product.category.charAt(0).toUpperCase() + product.category.slice(1)} Mattress
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-gray-700 text-sm">Price</p>
-                  <p className="text-primary text-3xl font-bold">₹{product.price.toLocaleString()}</p>
-                </div>
-                <div className="mt-4 md:mt-0">
-                  <Link
-                    href={`/contact?product=${product.id}`}
-                    className="bg-primary text-white font-medium px-6 py-3 rounded-md hover:bg-opacity-90 transition duration-300 inline-flex items-center"
-                  >
-                    Enquire Now
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            {/* Price section removed as requested */}
           </div>
 
-          {/* Notes */}
+          {/* Notes (price-related note removed) */}
           <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <h4 className="font-medium text-primary mb-2">Important Notes:</h4>
             <ul className="text-sm text-gray-600 space-y-1">
-              <li className="flex items-start">
-                <span className="text-primary mr-2">•</span>
-                <span>Prices exclude 18% GST</span>
-              </li>
               <li className="flex items-start">
                 <span className="text-primary mr-2">•</span>
                 <span>LUT exempt GST available</span>
