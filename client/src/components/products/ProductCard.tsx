@@ -98,15 +98,15 @@ export default function ProductCard({
         </div>
 
         {/* Delivery/EMI row */}
-        <div className="flex items-center gap-3 text-xs text-gray-600 mb-3">
+        {/* <div className="flex items-center gap-3 text-xs text-gray-600 mb-3">
           <span className="inline-flex items-center gap-1"><Truck className="h-3.5 w-3.5 text-primary" /> Free Delivery</span>
           {product.emiAvailable && (
             <span className="inline-flex items-center gap-1"><CreditCard className="h-3.5 w-3.5 text-primary" /> EMI available</span>
           )}
-        </div>
+        </div> */}
         
         <div className="flex flex-col xs:flex-row gap-2 mt-2">
-          <Link href={`/products/${product.id}`} className="flex-1">
+          <Link href={`/products/${product.id.toLowerCase()}`}>
             <Button 
               className="w-full bg-primary text-white hover:bg-primary/90 shadow-sm"
             >

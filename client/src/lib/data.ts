@@ -81,7 +81,7 @@ export const mattressImages = {
 
 export const allProducts: EnhancedProductType[] = [
   {
-    id: 'VG1',
+    id: 'VG001',
     title: 'Hybrid Mattress',
     description:
       'Our Hybrid Mattresses combine the best of both worlds—advanced pocketed innerspring support and plush memory foam comfort. Designed for international sleep standards, these mattresses deliver superior spinal alignment, motion isolation, and long-lasting durability. The innovative multi-layer construction balances firmness with contouring softness, making it ideal for all types of sleepers—back, side, or stomach. Crafted with premium breathable fabrics and high-density foams, our Hybrid Mattresses ensure cooler nights, reduced pressure points, and enhanced body support. Export-ready and tested for global markets, these mattresses are a preferred choice for retailers, wholesalers, and hospitality projects worldwide. Choose our Hybrid Mattress collection for a perfect fusion of luxury, technology, and ergonomic design—engineered to give your customers restful sleep and consistent quality.',
@@ -138,7 +138,7 @@ export const allProducts: EnhancedProductType[] = [
     ],
   },
   {
-    id: 'VG2',
+    id: 'VG002',
     title: 'Innerspring Mattress',
     description:
       'Our Innerspring Mattresses are engineered to deliver reliable comfort, durability, and superior support. Built with high-quality steel coil systems, these mattresses provide excellent spinal alignment, enhanced breathability, and long-lasting performance. The open-coil and pocket spring options ensure balanced firmness, making them suitable for all sleeping positions. Designed for global markets, our Innerspring Mattresses combine traditional craftsmanship with modern technology, offering value-driven comfort for retailers, wholesalers, and hospitality projects worldwide. Each mattress is layered with premium cushioning and breathable fabrics to ensure cooler, more restful nights. Choose our Innerspring Mattress collection for proven durability, export-ready quality, and consistent performance—perfect for international buyers seeking trusted comfort at competitive pricing.',
@@ -188,7 +188,7 @@ export const allProducts: EnhancedProductType[] = [
     ],
   },
   {
-    id: 'VG3',
+    id: 'VG003',
     title: 'Memory Foam Mattress',
     description:
       'Our Memory Foam Mattresses are crafted to deliver exceptional pressure relief, body contouring, and all-night comfort. Using advanced viscoelastic foam technology, these mattresses adapt to every body shape, ensuring proper spinal alignment and reduced motion transfer. This makes them an ideal choice for couples, families, and hospitality projects worldwide. Built with export-quality standards, each mattress features multiple layers of high-density memory foam combined with breathable fabrics for superior airflow and temperature regulation. This guarantees cooler nights, long-lasting durability, and consistent performance. Perfect for international retailers, wholesalers, and hotel suppliers, our Memory Foam Mattress collection is designed to meet global demand for premium sleep solutions—offering luxury, comfort, and proven support at competitive export pricing.',
@@ -239,7 +239,7 @@ export const allProducts: EnhancedProductType[] = [
     ],
   },
   {
-    id: 'VG4',
+    id: 'VG004',
     title: 'Orthopaedic Mattress',
     description:
       'Our Orthopedic Mattresses are specially engineered to provide firm support, proper spinal alignment, and targeted pressure relief for a healthier sleep experience. Designed in consultation with ergonomic experts, these mattresses help reduce back pain, improve posture, and support natural body curves. Crafted with export-quality materials, each mattress features high-density foam or advanced spring systems combined with breathable fabrics for maximum durability and comfort. Ideal for people of all age groups, especially those seeking therapeutic support, our Orthopedic Mattress collection is widely preferred by international retailers, healthcare providers, and the hospitality industry. With long-lasting performance, superior comfort, and clinically inspired design, our Orthopedic Mattresses deliver consistent quality for global markets—making them a reliable choice for wholesalers and distributors worldwide.',

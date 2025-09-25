@@ -5,6 +5,7 @@ import { EnhancedProductType, allProducts, mattressImages } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, ShoppingCart, Grid3X3, Star, Shield, Truck, Store, Home, ChevronRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -43,6 +44,9 @@ export default function ProductDetailPage() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const lengthOptions = ["72", "75", "78"];
+  const breadthOptions = ["36", "48", "60", "72"];
+  const thicknessOptions = ["4", "6", "8"];
 
   // Set up autoplay
   useEffect(() => {
@@ -63,7 +67,9 @@ export default function ProductDetailPage() {
   
   useEffect(() => {
     if (productId) {
-      const foundProduct = allProducts.find(p => p.id === productId);
+      const foundProduct = allProducts.find(
+        p => p.id.toLowerCase() === productId.toLowerCase()
+      );
       if (foundProduct) {
         setProduct(foundProduct);
         
@@ -127,7 +133,7 @@ export default function ProductDetailPage() {
             </Link>
             <ChevronRight className="h-4 w-4 mx-2 text-gray-400" />
             <span className="text-gray-900 font-medium uppercase">
-              {productId}
+              {productId?.toLowerCase()}
             </span>
           </nav>
 
@@ -217,6 +223,45 @@ export default function ProductDetailPage() {
                     </ul>
                   </div>
 
+                  {/* Product Details Table (SKU, Size/Dimensions, Colour, Material, Handle/Strap, MOQ, Category) */}
+                  <div className="mt-4">
+                    <h4 className="text-sm font-medium text-green-700 mb-2">Product Details</h4>
+                    <div className="overflow-hidden rounded-md border border-green-400">
+                      <table className="w-full text-sm">
+                        <tbody>
+                          <tr className="border-b border-green-300/70">
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Product Code</td>
+                            <td className="px-4 py-3 text-gray-900">{product.id}</td>
+                          </tr>
+                          <tr className="border-b border-green-300/70">
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Size/Dimensions</td>
+                            <td className="px-4 py-3 text-gray-900">{`${product.length}" x ${product.breadth}" x ${product.height}"`}</td>
+                          </tr>
+                          <tr className="border-b border-green-300/70">
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Colour</td>
+                            <td className="px-4 py-3 text-gray-900">{(product.specs as any)?.Colour ?? 'Natural'}</td>
+                          </tr>
+                          <tr className="border-b border-green-300/70">
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Material</td>
+                            <td className="px-4 py-3 text-gray-900">{(product.materials && product.materials.length > 0) ? product.materials.join(', ') : ((product.specs as any)?.Material ?? '—')}</td>
+                          </tr>
+                          <tr className="border-b border-green-300/70">
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Handle/Strap</td>
+                            <td className="px-4 py-3 text-gray-900">{(product.specs as any)?.HandleStrap ?? 'NA'}</td>
+                          </tr>
+                          <tr className="border-b border-green-300/70">
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">MOQ</td>
+                            <td className="px-4 py-3 text-gray-900">{(product.specs as any)?.MOQ ?? '10 Pieces'}</td>
+                          </tr>
+                          <tr>
+                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Product Category</td>
+                            <td className="px-4 py-3 text-gray-900">{product.category.charAt(0).toUpperCase() + product.category.slice(1)}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
                   {product.specs && (
                     <div className="mt-4">
                       <p className="text-sm text-gray-500 mb-2">Specifications</p>
@@ -237,11 +282,11 @@ export default function ProductDetailPage() {
                   <Separator className="my-6" />
                   
                   <div className="flex flex-col gap-6">
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700">
+                    {/* <div className="flex flex-wrap items-center gap-4 text-sm text-gray-700">
                       <span className="inline-flex items-center gap-1"><Store className="h-4 w-4 text-primary" /> Seller: <span className="font-medium ml-1">{product.seller ?? 'VIZKO Sleep Co.'}</span></span>
                       <span className="inline-flex items-center gap-1"><Shield className="h-4 w-4 text-primary" /> {product.warranty ?? 'Warranty available'}</span>
                       <span className="inline-flex items-center gap-1"><Truck className="h-4 w-4 text-primary" /> {product.delivery ?? 'Free delivery'}</span>
-                    </div>
+                    </div> */}
                     <Button onClick={() => setEnquireOpen(true)} className="w-full md:w-auto bg-primary hover:bg-primary/90">
                       <ShoppingCart className="mr-2 h-4 w-4" />
                       Enquire Now
@@ -408,6 +453,7 @@ export default function ProductDetailPage() {
                 const formData = new FormData();
                 formData.append("access_key", "685a36e8-634c-4f0c-980b-6d937e96e041");
                 formData.append("subject", `Enquiry: ${product?.title.split("\n\n")[0]} (${product?.id})`);
+                formData.append("productCode", product?.id ?? "");
                 formData.append("name", formValues.name);
                 formData.append("email", formValues.email);
                 formData.append("phone", formValues.mobile);
@@ -428,13 +474,47 @@ export default function ProductDetailPage() {
             }}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Input placeholder="Product Code" value={product?.id} readOnly />
               <Input placeholder="Name" required value={formValues.name} onChange={(e) => setFormValues(v => ({ ...v, name: e.target.value }))} />
               <Input type="email" placeholder="Email" required value={formValues.email} onChange={(e) => setFormValues(v => ({ ...v, email: e.target.value }))} />
               <Input placeholder="Mobile" required value={formValues.mobile} onChange={(e) => setFormValues(v => ({ ...v, mobile: e.target.value }))} />
               <div />
-              <Input placeholder="Length (inches)" value={formValues.length} onChange={(e) => setFormValues(v => ({ ...v, length: e.target.value }))} />
-              <Input placeholder="Breadth (inches)" value={formValues.breadth} onChange={(e) => setFormValues(v => ({ ...v, breadth: e.target.value }))} />
-              <Input placeholder="Thickness (inches)" value={formValues.thickness} onChange={(e) => setFormValues(v => ({ ...v, thickness: e.target.value }))} />
+              <div>
+                <Select value={formValues.length} onValueChange={(val) => setFormValues(v => ({ ...v, length: val }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Length (inches)" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {lengthOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Select value={formValues.breadth} onValueChange={(val) => setFormValues(v => ({ ...v, breadth: val }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Breadth (inches)" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {breadthOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Select value={formValues.thickness} onValueChange={(val) => setFormValues(v => ({ ...v, thickness: val }))}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Thickness (inches)" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {thicknessOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="sm:col-span-2">
                 <Textarea rows={4} placeholder="Address" value={formValues.address} onChange={(e) => setFormValues(v => ({ ...v, address: e.target.value }))} />
               </div>

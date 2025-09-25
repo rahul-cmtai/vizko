@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function Contact() {
   return (
@@ -10,6 +11,9 @@ export default function Contact() {
         <meta name="description" content="Get in touch with VIZKO's export team to discuss your premium mattress requirements." />
       </Helmet>
       <section className="pt-24 bg-accent">
+        <div className="container mx-auto px-4">
+          <Breadcrumb items={[{ label: "Contact Us" }]} />
+        </div>
         <div className="container mx-auto px-4 py-20">
           <div className="text-center mb-16">
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-primary">Contact Us</h1>

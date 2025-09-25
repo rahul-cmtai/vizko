@@ -1,6 +1,12 @@
+import Breadcrumb from "../Breadcrumb";
+
 export default function CompanyIntro() {
   return (
-    <div className="pt-20 bg-accent">
+    
+    <div className="pt-20">
+      <div className="container mx-auto px-4">
+              <Breadcrumb items={[{ label: "About" }]} />
+      </div>
       <div className="relative">
         <div className="absolute inset-0 bg-primary opacity-60"></div>
         <div className="relative container mx-auto px-4 py-20 md:py-32 z-10">
@@ -12,7 +18,10 @@ export default function CompanyIntro() {
           </div>
         </div>
         <img 
-          src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" 
+          
+              src="/assets/images/about-us.png" 
+             
+            
           alt="Premium mattress manufacturing" 
           className="absolute inset-0 w-full h-full object-cover -z-10"
         />

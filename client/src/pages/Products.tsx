@@ -11,6 +11,8 @@ import {
   
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Breadcrumb from "@/components/Breadcrumb";
+
 // Removed search and sort UI
 
 export default function Products() {
@@ -67,13 +69,19 @@ export default function Products() {
       </Helmet>
       
       <section className="pt-24 bg-gray-50 min-h-screen">
+         <div className="container mx-auto px-4">
+            <Breadcrumb items={[{ label: "Products" }]} />
+          </div>
         <div className="container mx-auto px-4 py-12">
+          
           <div className="text-center mb-8">
             <h1 className="font-playfair text-3xl md:text-4xl font-bold text-primary">Our Products</h1>
             <p className="mt-4 text-gray-700 max-w-2xl mx-auto">
               Explore our range of export-quality mattresses designed to meet diverse market needs worldwide.
             </p>
           </div>
+
+         
 
           {/* Controls removed as per requirement */}
 

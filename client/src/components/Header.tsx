@@ -59,7 +59,7 @@ export default function Header() {
                 { label: "About", path: "/about" },
                 { label: "Products", path: "/products" },
                 { label: "Packaging", path: "/packaging" },
-                { label: "Contact", path: "/contact" }
+                { label: "Contact Us", path: "/contact" }
               ].map((link, index) => (
                 <Link
                   key={index}

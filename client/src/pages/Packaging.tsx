@@ -1,8 +1,49 @@
 import { motion } from "framer-motion";
-import { Package, Box, Truck, Shield, Sparkles, Heart, Star, Award } from "lucide-react";
+import { Package, Box, Truck, Shield, Sparkles, Heart, Star, Award, LucideIcon } from "lucide-react";
+import Breadcrumb from "@/components/Breadcrumb";
+import React, { useState, useEffect } from "react";
 
-export default function Packaging() {
-  const features = [
+// Type definitions
+interface FeatureItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+// Props type for Breadcrumb component (if needed)
+interface BreadcrumbProps {
+  items: BreadcrumbItem[];
+}
+
+const Packaging: React.FC = () => {
+  const [isBreadcrumbVisible, setBreadcrumbVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // Hide breadcrumb if scrolling down, show if scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setBreadcrumbVisible(false);
+      } else {
+        setBreadcrumbVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+  const features: FeatureItem[] = [
     {
       icon: Package,
       title: "Premium Packaging",
@@ -25,7 +66,7 @@ export default function Packaging() {
     }
   ];
 
-  const premiumFeatures = [
+  const premiumFeatures: FeatureItem[] = [
     {
       icon: Sparkles,
       title: "Luxury Finishes",
@@ -48,8 +89,21 @@ export default function Packaging() {
     }
   ];
 
+  const galleryItems: number[] = [1, 2, 3, 4, 5, 6];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      
+      {/* Breadcrumb Section */}
+      <div 
+        className={`sticky top-[68px] z-30 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-transform duration-300 ease-in-out ${isBreadcrumbVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      >
+        <div className="container mx-auto px-4 mb-0 py-5">
+          {/* CORRECTION: Removed the duplicate "Home" link from here */}
+          <Breadcrumb items={[{ label: "Packaging" }]} />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 to-white">
         <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-10"></div>
@@ -78,6 +132,7 @@ export default function Packaging() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-primary text-white px-6 py-3 rounded-full text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            type="button"
           >
             Explore Our Collection
           </motion.button>
@@ -95,21 +150,24 @@ export default function Packaging() {
             Why Choose Our Packaging?
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-              >
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                  <feature.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
+            {features.map((feature: FeatureItem, index: number) => {
+              const IconComponent = feature.icon;
+              return (
+                <motion.div
+                  key={`feature-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                >
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <IconComponent className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -125,21 +183,24 @@ export default function Packaging() {
             Premium Features
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {premiumFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-              >
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                  <feature.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
+            {premiumFeatures.map((feature: FeatureItem, index: number) => {
+              const IconComponent = feature.icon;
+              return (
+                <motion.div
+                  key={`premium-${index}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                >
+                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                    <IconComponent className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-4">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -155,9 +216,9 @@ export default function Packaging() {
             Our Packaging Gallery
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item, index) => (
+            {galleryItems.map((item: number, index: number) => (
               <motion.div
-                key={index}
+                key={`gallery-${item}-${index}`}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -166,7 +227,10 @@ export default function Packaging() {
                 <div className="aspect-w-16 aspect-h-9 bg-gray-200">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="bg-white text-primary px-6 py-3 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <button 
+                      className="bg-white text-primary px-6 py-3 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                      type="button"
+                    >
                       View Details
                     </button>
                   </div>
@@ -199,6 +263,7 @@ export default function Packaging() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            type="button"
           >
             Get Started
           </motion.button>
@@ -206,4 +271,6 @@ export default function Packaging() {
       </section>
     </div>
   );
-} 
+};
+
+export default Packaging;
