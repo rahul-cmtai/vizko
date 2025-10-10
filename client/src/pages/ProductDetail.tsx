@@ -74,11 +74,16 @@ export default function ProductDetailPage() {
         setProduct(foundProduct);
         
         // Find related products (same category, different dimensions)
-        const related = allProducts.filter(p => 
+        let related = allProducts.filter(p => 
           p.category === foundProduct.category && 
           p.id !== foundProduct.id
         ).slice(0, 3);
-        
+
+        // Fallback: if none in same category, show any other products
+        if (related.length === 0) {
+          related = allProducts.filter(p => p.id !== foundProduct.id).slice(0, 3);
+        }
+
         setRelatedProducts(related);
       }
     }
@@ -107,6 +112,17 @@ export default function ProductDetailPage() {
     mattressImages[product.category as keyof typeof mattressImages].length > 0
       ? mattressImages[product.category as keyof typeof mattressImages]
       : [product.image];
+  
+  const categoryDescriptions: Record<string, string> = {
+    "Memory Foam":
+      "Experience unparalleled relaxation with the Memory Foam Mattress from Vizko Global, crafted to deliver adaptive support and superior pressure relief. The advanced cooling gel foam and body contour design ensure balanced spine alignment and lasting comfort. With motion isolation technology and breathable sleep surface, it minimizes partner disturbance while maintaining freshness all night. Ideal for side sleepers and those seeking deep sleep comfort, this luxury foam mattress combines plush softness with orthopedic-grade support, providing durability, resilience, and restful sleep. Choose innovation, comfort, and wellness — redefine your sleep experience with Vizko Global’s premium memory foam range.",
+    "Orthopedic":
+      "The Orthopedic Mattress from Vizko Global offers exceptional spine support and posture alignment, ideal for those seeking firm, healthy rest. Engineered with high-density foam and an ergonomic design, it relieves pressure points and promotes natural body positioning. Recommended for back pain relief and improved joint support, this doctor-approved mattress ensures therapeutic comfort and restorative sleep night after night. Its firm base enhances durability while maintaining gentle cushioning for long-lasting resilience. Designed for both comfort and care, Vizko Global’s orthopedic mattress delivers the perfect balance between medical-grade firmness and luxurious rest.",
+    "Hybrid":
+      "Sleep smarter with the Hybrid Mattress from Vizko Global, blending adaptive foam layers with responsive pocket springs for unmatched comfort and support. This innovative design provides dual firmness, ensuring pressure relief without compromising edge-to-edge stability. The airflow system keeps your bed cool and fresh, while the zoned support structure adapts to every body shape and sleeping style. Crafted for durability and balanced comfort, it delivers luxury hotel-like sleep with enhanced resilience and body alignment. Perfect for all sleepers, Vizko Global’s hybrid mattress redefines premium rest through technology, design, and superior materials.",
+    "Innerspring":
+      "Rediscover timeless comfort with the Innerspring Mattress by Vizko Global, crafted with high-quality coil support technology for firm yet responsive comfort. Its traditional spring system ensures optimal body weight distribution and sleep stability, while the breathable quilted top enhances softness and airflow. Designed for long-lasting performance, this mattress combines bounce, support, and ventilation for a refreshing sleep experience. Perfect for those who prefer a classic, resilient feel, the innerspring structure minimizes motion transfer and enhances durability. Choose Vizko Global’s innerspring mattress for enduring quality, luxurious comfort, and reliable sleep support every night.",
+  };
   
   return (
     <>
@@ -238,16 +254,8 @@ export default function ProductDetailPage() {
                             <td className="px-4 py-3 text-gray-900">{`${product.length}" x ${product.breadth}" x ${product.height}"`}</td>
                           </tr>
                           <tr className="border-b border-green-300/70">
-                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Colour</td>
-                            <td className="px-4 py-3 text-gray-900">{(product.specs as any)?.Colour ?? 'Natural'}</td>
-                          </tr>
-                          <tr className="border-b border-green-300/70">
                             <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Material</td>
                             <td className="px-4 py-3 text-gray-900">{(product.materials && product.materials.length > 0) ? product.materials.join(', ') : ((product.specs as any)?.Material ?? '—')}</td>
-                          </tr>
-                          <tr className="border-b border-green-300/70">
-                            <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">Handle/Strap</td>
-                            <td className="px-4 py-3 text-gray-900">{(product.specs as any)?.HandleStrap ?? 'NA'}</td>
                           </tr>
                           <tr className="border-b border-green-300/70">
                             <td className="w-40 bg-white/60 px-4 py-3 font-semibold text-gray-800">MOQ</td>
@@ -299,54 +307,8 @@ export default function ProductDetailPage() {
             {/* Full-Width Product Details Section */}
             <div className="border-t border-gray-200">
               <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {product.boxContents && product.boxContents.length > 0 && (
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                      <h4 className="font-medium text-primary mb-2">In the Box</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                        {product.boxContents.map((item, idx) => (
-                          <li key={idx}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {product.materials && product.materials.length > 0 && (
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                      <h4 className="font-medium text-primary mb-2">Materials</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {product.materials.map((m, idx) => (
-                          <span key={idx} className="bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-700">{m}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  
-                  {product.careInstructions && product.careInstructions.length > 0 && (
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                      <h4 className="font-medium text-primary mb-2">Care Instructions</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                        {product.careInstructions.map((c, idx) => (
-                          <li key={idx}>{c}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {product.certifications && product.certifications.length > 0 && (
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                      <h4 className="font-medium text-primary mb-2">Certifications</h4>
-                      <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                        {product.certifications.map((c, idx) => (
-                          <li key={idx}>{c}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-                
                 {/* FAQ Section - Full Width */}
-                {product.faqs && product.faqs.length > 0 && (
+                {/* {product.faqs && product.faqs.length > 0 && (
                   <div className="mt-6">
                     <div className="bg-white border border-gray-200 rounded-lg p-4">
                       <h4 className="font-medium text-primary mb-3">Frequently Asked Questions</h4>
@@ -360,64 +322,26 @@ export default function ProductDetailPage() {
                       </div>
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
             
-            {/* Additional Information Section */}
-            <div className="p-6 bg-gray-50 border-t border-gray-100">
-              <h3 className="text-lg font-semibold mb-4">Additional Information</h3>
-              <ul className="list-disc pl-5 space-y-2 text-gray-700">
-                <li>Mattresses are roll-packed in rexine for safe transportation</li>
-                <li>Export-grade materials meeting international standards</li>
-                <li>Custom sizing available for bulk orders</li>
-                <li>Vacuum-sealed packaging available upon request</li>
-              </ul>
-              
-              {/* Reviews - Full Width */}
-              {product.reviews && product.reviews.length > 0 && (
-                <div className="mt-6">
-                  <h4 className="font-medium text-primary mb-3">Customer Reviews</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {product.reviews.map((r, idx) => (
-                      <div key={idx} className="bg-white border border-gray-200 rounded-lg p-3">
-                        <div className="flex items-center justify-between">
-                          <div className="text-sm font-medium text-gray-900">{r.name}</div>
-                          <div className="flex items-center gap-1">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <span key={i} className={`${(r.rating ?? 0) > i ? 'text-yellow-400' : 'text-gray-300'}`}>★</span>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="text-sm text-gray-700 mt-1">{r.comment}</div>
-                        {r.date && <div className="text-xs text-gray-500 mt-1">{r.date}</div>}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {/* Q&A - Full Width */}
-              {product.qa && product.qa.length > 0 && (
-                <div className="mt-6">
-                  <h4 className="font-medium text-primary mb-3">Questions & Answers</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {product.qa.map((q, idx) => (
-                      <div key={idx} className="bg-white border border-gray-200 rounded-lg p-3">
-                        <div className="text-sm font-medium text-gray-900">Q: {q.question}</div>
-                        <div className="text-sm text-gray-700 mt-1">A: {q.answer}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
           
+          {/* Category Description */}
+          {categoryDescriptions[product.category] && (
+            <div className="mt-12">
+              <div className="bg-white rounded-lg border border-gray-200 p-6">
+                <h3 className="text-xl font-semibold text-primary mb-3">About {product.category} Mattresses</h3>
+                <p className="text-gray-700 leading-relaxed">{categoryDescriptions[product.category]}</p>
+              </div>
+            </div>
+          )}
+
           <Separator className="my-8" />
           
           {/* Related Products */}
-          {relatedProducts.length > 1 && (
+          {relatedProducts.length > 0 && (
             <div className="mt-12">
               <div className="flex items-center gap-2 mb-6">
                 <Grid3X3 className="text-primary h-5 w-5" />
