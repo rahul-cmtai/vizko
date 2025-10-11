@@ -23,20 +23,33 @@ export default function Header() {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setIsProductsDropdownOpen(false);
   };
 
   const toggleProductsDropdown = () => {
     setIsProductsDropdownOpen(!isProductsDropdownOpen);
   };
 
+  const closeProductsDropdown = () => {
+    setIsProductsDropdownOpen(false);
+  };
+
+  const handleMobileNavigation = (path: string) => {
+    closeProductsDropdown();
+    closeMenu();
+    // Navigate using window.location
+    window.location.href = path;
+  };
+
   const isActive = (path: string) => {
     return location === path;
   };
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside (desktop only)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      // Only apply click outside on desktop (when menu is not open)
+      if (!isMenuOpen && dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsProductsDropdownOpen(false);
       }
     };
@@ -45,7 +58,7 @@ export default function Header() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   const socialMediaLinks = [
     { icon: Facebook, url: "https://www.facebook.com/share/1771WNLDvR/?mibextid=wwXIfr", label: "Facebook" },
@@ -102,14 +115,14 @@ export default function Header() {
                       <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50">
                         <Link
                           href="/products"
-                          onClick={() => setIsProductsDropdownOpen(false)}
+                          onClick={closeProductsDropdown}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                         >
                           Mattresses
                         </Link>
                         <Link
                           href="/cushions"
-                          onClick={() => setIsProductsDropdownOpen(false)}
+                          onClick={closeProductsDropdown}
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors duration-200"
                         >
                           Cushions
@@ -194,21 +207,25 @@ export default function Header() {
                   
                   {/* Mobile Dropdown Menu */}
                   {isProductsDropdownOpen && (
-                    <div className="ml-4 space-y-2">
-                      <Link
-                        href="/products"
-                        onClick={closeMenu}
-                        className="block py-2 text-sm text-gray-600 hover:text-primary transition-colors duration-200"
+                    <div className="ml-4 space-y-2 relative z-50">
+                      <button
+                        onClick={() => {
+                          console.log('Mattresses clicked');
+                          handleMobileNavigation("/products");
+                        }}
+                        className="block py-2 text-sm text-gray-600 hover:text-primary transition-colors duration-200 cursor-pointer text-left w-full"
                       >
                         Mattresses
-                      </Link>
-                      <Link
-                        href="/cushions"
-                        onClick={closeMenu}
-                        className="block py-2 text-sm text-gray-600 hover:text-primary transition-colors duration-200"
+                      </button>
+                      <button
+                        onClick={() => {
+                          console.log('Cushions clicked');
+                          handleMobileNavigation("/cushions");
+                        }}
+                        className="block py-2 text-sm text-gray-600 hover:text-primary transition-colors duration-200 cursor-pointer text-left w-full"
                       >
                         Cushions
-                      </Link>
+                      </button>
                     </div>
                   )}
                 </div>
