@@ -80,17 +80,15 @@ export default function ProductComparison({
       const dimensionsRow = ['Dimensions'];
       const descriptionRow = ['Description'];
       const layersRow = ['Layers'];
-      const priceRow = ['Price'];
       
       compareProducts.forEach(product => {
         categoryRow.push(product.category.charAt(0).toUpperCase() + product.category.slice(1));
         dimensionsRow.push(`${product.length}" × ${product.breadth}" × ${product.height}"`);
         descriptionRow.push(product.description);
         layersRow.push(product.additionalDescription);
-        priceRow.push(`₹${product.price.toLocaleString()}`);
       });
       
-      tableData.push(categoryRow, dimensionsRow, descriptionRow, layersRow, priceRow);
+      tableData.push(categoryRow, dimensionsRow, descriptionRow, layersRow);
       
       // Add the table to the PDF
       autoTable(doc, {
@@ -323,9 +321,6 @@ export default function ProductComparison({
                             <p className="text-[8px] sm:text-[10px] md:text-xs text-gray-600 line-clamp-2 mb-0.5 sm:mb-1">
                               {product.description}
                             </p>
-                            <p className="text-primary font-bold text-xs sm:text-sm md:text-base">
-                              ₹{product.price.toLocaleString()}
-                            </p>
                           </div>
                         </div>
                       </th>
@@ -396,20 +391,6 @@ export default function ProductComparison({
                     ))}
                   </tr>
 
-                  {/* Price */}
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    <td className="p-1 sm:p-2 font-medium sticky left-0 z-10 bg-gray-50 text-xs sm:text-sm">Price</td>
-                    {compareProducts.map((product) => (
-                      <td key={`price-${product.id}`} className="p-1 sm:p-2 text-center">
-                        <p className="text-sm sm:text-base md:text-lg font-bold text-primary">
-                          ₹{product.price.toLocaleString()}
-                        </p>
-                      </td>
-                    ))}
-                    {Array.from({ length: 4 - compareProducts.length }).map((_, i) => (
-                      <td key={`empty-price-${i}`} className="p-1 sm:p-2"></td>
-                    ))}
-                  </tr>
                 </tbody>
               </table>
             </div>

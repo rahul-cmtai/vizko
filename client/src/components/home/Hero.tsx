@@ -4,46 +4,62 @@ import { useState, useEffect, useCallback } from "react";
 
 // Define the slide data
 const slides = [
-  {
-    id: 1,
+  
+    {
+      id: 1,
+      image: "/hero1.jpg",
+      alt: "Premium cushions collection",
+      title: "Luxury Cushions. Comfort Redefined.",
+      description: "Discover our exquisite collection of premium cushions, crafted with the finest materials for ultimate comfort and style.",
+      ctaText: "Shop Cushions",
+      ctaLink: "/cushions"
+    },
+    {
+    id: 2,
     image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
     alt: "Premium mattress in luxury bedroom",
     title: "Premium Mattresses. Global Comfort.",
     description: "Export-quality comfort, crafted in India. Experience the perfect balance of luxury, support, and durability.",
-    ctaText: "Explore Products"
+    ctaText: "Explore Products",
+    ctaLink: "/products"
   },
   {
-    id: 2,
+    id: 3,
     image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
     alt: "Comfortable memory foam mattress",
     title: "Luxury Redefined. Sleep Perfected.",
     description: "Discover our premium collection of memory foam mattresses, designed for ultimate comfort and support.",
-    ctaText: "View Collection"
+    ctaText: "View Collection",
+    ctaLink: "/products"
   },
   {
-    id: 3,
+    id: 4,
     image: "https://images.unsplash.com/photo-1634646515707-de1b9cda79b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
     alt: "Luxury mattress in elegant bedroom",
     title: "Sleep Like Royalty. Every Night.",
     description: "Experience the luxury of premium bedding with our exclusive range of mattresses and accessories.",
-    ctaText: "Shop Now"
+    ctaText: "Shop Now",
+    ctaLink: "/products"
   },
   {
-    id: 4,
+    id: 5,
     image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     alt: "Orthopedic mattress in modern bedroom",
     title: "Orthopedic Excellence. For Your Health.",
     description: "Our orthopedic mattresses are designed to provide perfect spinal alignment and pressure relief.",
-    ctaText: "Learn More"
+    ctaText: "Learn More",
+    ctaLink: "/products"
   },
   {
-    id: 5,
+    id: 6,
     image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
     alt: "Premium innerspring mattress",
     title: "Innovative Comfort. Timeless Design.",
     description: "Experience the perfect blend of traditional craftsmanship and modern technology in our mattresses.",
-    ctaText: "Discover More"
-  }
+    ctaText: "Discover More",
+    ctaLink: "/products"
+  },
+ 
 ];
 
 export default function Hero() {
@@ -104,7 +120,7 @@ export default function Hero() {
                   </p>
                   <div className="mt-10">
                     <Link 
-                      href="/products" 
+                      href={slide.ctaLink || "/products"} 
                       className="bg-primary text-white font-lato font-medium px-8 py-3 rounded hover:bg-opacity-90 transition duration-300 inline-flex items-center"
                     >
                       {slide.ctaText}

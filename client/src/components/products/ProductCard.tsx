@@ -36,7 +36,7 @@ export default function ProductCard({
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative">
-        <AspectRatio ratio={16 / 9}>
+        <AspectRatio ratio={4 / 3}>
           <img 
             src={product.image || "/assets/images/default-mattress.jpg"}
             alt={product.title}
@@ -53,11 +53,13 @@ export default function ProductCard({
             {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
           </Badge>
         </div>
-        <div className="absolute top-2 right-2">
-          <Badge className="bg-yellow-500 text-white text-xs font-medium px-2.5 py-0.5 rounded shadow">
-            {product.height}" Thick
-          </Badge>
-        </div>
+        {product.category !== 'cushions' && product.category !== 'cushioncovers' && (
+          <div className="absolute top-2 right-2">
+            <Badge className="bg-yellow-500 text-white text-xs font-medium px-2.5 py-0.5 rounded shadow">
+              {product.height}" Thick
+            </Badge>
+          </div>
+        )}
       </div>
       
       <div className="p-5">
@@ -106,7 +108,7 @@ export default function ProductCard({
         </div> */}
         
         <div className="flex flex-col xs:flex-row gap-2 mt-2">
-          <Link href={`/products/${product.id.toLowerCase()}`}>
+          <Link href={product.category === 'cushions' || product.category === 'cushioncovers' ? `/cushions/${product.id.toLowerCase()}` : `/products/${product.id.toLowerCase()}`}>
             <Button 
               className="w-full bg-primary text-white hover:bg-primary/90 shadow-sm"
             >

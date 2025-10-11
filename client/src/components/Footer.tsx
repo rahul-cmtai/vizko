@@ -57,6 +57,8 @@ export default function Footer() {
               <li><Link href="/products" className="text-gray-300 hover:text-white transition duration-300">Inner Spring Mattresses</Link></li>
               <li><Link href="/products" className="text-gray-300 hover:text-white transition duration-300">Memory Foam Mattresses</Link></li>
               <li><Link href="/products" className="text-gray-300 hover:text-white transition duration-300">Orthopaedic Mattresses</Link></li>
+              <li><Link href="/cushions" className="text-gray-300 hover:text-white transition duration-300">Cushions</Link></li>
+              <li><Link href="/cushions" className="text-gray-300 hover:text-white transition duration-300">Cushion Covers</Link></li>
             </ul>
           </div>
           

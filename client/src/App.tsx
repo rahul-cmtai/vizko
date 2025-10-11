@@ -7,19 +7,24 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Products from "@/pages/Products";
+import Cushions from "@/pages/Cushions";
 import ProductDetail from "@/pages/ProductDetail";
 import Contact from "@/pages/Contact";
 import Packaging from "@/pages/Packaging";
 import Layout from "@/components/Layout";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function Router() {
   return (
     <Layout>
+      <ScrollToTop />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/products" component={Products} />
+        <Route path="/cushions" component={Cushions} />
         <Route path="/products/:productId" component={ProductDetail} />
+        <Route path="/cushions/:productId" component={ProductDetail} />
         <Route path="/contact" component={Contact} />
         <Route path="/packaging" component={Packaging} />
         <Route component={NotFound} />
